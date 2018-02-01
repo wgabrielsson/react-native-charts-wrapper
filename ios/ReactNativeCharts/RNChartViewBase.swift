@@ -358,7 +358,17 @@ open class RNChartViewBase: UIView, ChartViewDelegate {
             } else if "date" == valueFormatter.stringValue {
               let valueFormatterPattern = config["valueFormatterPattern"].stringValue;
               axis.valueFormatter = ChartDateFormatter(pattern: valueFormatterPattern);
-            } else {
+            } else if "hour" == valueFormatter.stringValue {
+              let max = config["valueFormatterMax"].double
+              let min = config["valueFormatterMin"].double
+              axis.valueFormatter = HourFormatter(minValue: min, maxValue: max);
+            } else if "unit" == valueFormatter.stringValue {
+              let max = config["valueFormatterMax"].double
+              let min = config["valueFormatterMin"].double
+              let unit = config["unitSuffix"].string
+              axis.valueFormatter = FormatterWithUnit(minValue: min, maxValue: max, unit: unit)
+            }
+            else {
               let customFormatter = NumberFormatter()
               customFormatter.positiveFormat = valueFormatter.stringValue
               customFormatter.negativeFormat = valueFormatter.stringValue
