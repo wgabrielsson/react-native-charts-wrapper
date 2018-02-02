@@ -146,6 +146,10 @@ open class RNChartViewBase: UIView, ChartViewDelegate {
     func setTouchEnabled(_ touchEnabled: Bool) {
         chart.isUserInteractionEnabled = touchEnabled
     }
+  
+    func setHighlightPerTapEnabled(_ enabled: Bool) {
+      chart.highlightPerTapEnabled = enabled
+    }
     
     func setDragDecelerationEnabled(_ dragDecelerationEnabled: Bool) {
         chart.dragDecelerationEnabled = dragDecelerationEnabled
